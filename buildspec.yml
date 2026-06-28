@@ -10,12 +10,14 @@ phases:
 
   build:
     commands:
-      - echo "Running application..."
-      - python app.py
+      - echo "Checking Python syntax..."
+      - python -m py_compile app.py
+      - echo "Importing Flask application..."
+      - python -c "from app import app; print('Flask app imported successfully')"
 
   post_build:
     commands:
-      - echo "Build completed successfully!"
+      - echo "CI pipeline completed successfully."
 
 artifacts:
   files:
